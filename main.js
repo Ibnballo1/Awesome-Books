@@ -25,17 +25,7 @@ const createListOfBook = () => {
     titleList.innerText = title;
     authorList.innerText = author;
     ul.append(titleList, authorList, listRemoveBtn, listLine);
-    removeBtn.addEventListener('click', ()=> {
-      books=books.filter((book, i)=> i !== index);
-      ul.innerHTML = '';
-      if (books.length === 0) {
-        const emptMsg = document.createElement('li');
-        emptMsg.innerText = 'There is no book added. Use the form below to add book(s).'
-        ul.appendChild(emptMsg)
-      } else {
-        createListOfBook();
-      }
-    })
+    removeBook(removeBtn, index);
   });
 }
 
@@ -51,6 +41,21 @@ const addBook = (event) => {
   authorInput.value = ''
   ul.innerText = ''
   createListOfBook()
+}
+
+// function to remove Book
+const removeBook = (removeBtn, index)=> {
+  removeBtn.addEventListener('click', ()=> {
+    books=books.filter((book, i)=> i !== index);
+    ul.innerHTML = '';
+    if (books.length === 0) {
+      const emptMsg = document.createElement('li');
+      emptMsg.innerText = 'There is no book added. Use the form below to add book(s).'
+      ul.appendChild(emptMsg)
+    } else {
+      createListOfBook();
+    }
+  })
 }
 
 createListOfBook();
