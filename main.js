@@ -61,14 +61,17 @@ const removeBook = (removeBtn, index)=> {
 
 const storeData = ()=> {
   const data = JSON.stringify(books);
-  // console.log(data);
   localStorage.setItem('books', data);
 }
 
 const getData = ()=> {
-  const restoreData = localStorage.getItem('books')
-  const parseData = JSON.parse(restoreData);
-  books = parseData;
+  let restoreData = localStorage.getItem('books')
+  if (restoreData === null || restoreData === undefined || restoreData === "") {
+    books
+  } else {
+    const parseData = JSON.parse(restoreData);
+    books = parseData;
+  }
   displayBook();
 }
 
