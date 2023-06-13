@@ -15,7 +15,7 @@ const isEmpty = () => {
     emptMsg.innerText = 'There is no book added. Use the form below to add book(s).';
     ul.appendChild(emptMsg);
   }
-}
+};
 
 // function to remove Book
 const removeBook = (removeBtn, index) => {
@@ -68,12 +68,8 @@ const addBook = (event) => {
 
 const getData = () => {
   const restoreData = localStorage.getItem('books');
-  if (restoreData === null || restoreData === undefined || restoreData === '') {
-    books = books;
-  } else {
-    const parseData = JSON.parse(restoreData);
-    books = parseData;
-  }
+  const parseData = JSON.parse(restoreData);
+  books = parseData;
   displayBook();
 };
 
